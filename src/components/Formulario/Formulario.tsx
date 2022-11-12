@@ -7,11 +7,16 @@ type Props<T> = {
 
 export default function Formulario<T>({ campos, dados }: Props<T>) {
   return (
-    <>
-      {campos.forEach((campo) => {
+    <div>
+      {campos.map((campo) => {
         switch (campo.tipo) {
           case "agrupador":
-            return <Formulario campos={campo.campos} dados={dados} />;
+            return (
+              <fieldset>
+                <legend>{campo.titulo}</legend>
+                <Formulario campos={campo.campos} dados={dados} />
+              </fieldset>
+            );
 
           case "texto":
             return <CampoTexto campo={campo} dados={dados} />;
@@ -20,6 +25,6 @@ export default function Formulario<T>({ campos, dados }: Props<T>) {
             return <></>;
         }
       })}
-    </>
+    </div>
   );
 }

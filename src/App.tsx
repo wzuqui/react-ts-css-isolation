@@ -1,6 +1,7 @@
-import DxConfig from "devextreme/core/config";
 import "devextreme/dist/css/dx.common.css";
 import "devextreme/dist/css/dx.light.css";
+
+import DxConfig from "devextreme/core/config";
 import { loadMessages, locale } from "devextreme/localization";
 import { messages } from "./devextreme-pt";
 
@@ -23,7 +24,11 @@ export default function App() {
     FuzoHorario: [Intl.DateTimeFormat().resolvedOptions().timeZone],
   };
 
-  return <Formulario campos={campos()} dados={dados} />;
+  return (
+    <div>
+      <Formulario campos={campos()} dados={dados} />
+    </div>
+  );
 
   function campos() {
     const retorno: Campo[] = [
